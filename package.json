@@ -2,6 +2,7 @@
   "name": "ui",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.7.0",
@@ -19,9 +20,14 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build && mv build dist",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && wrangler pages deploy dist",
+    "deploy:staging": "npm run build && wrangler pages deploy dist --env staging",
+    "deploy:production": "npm run build && wrangler pages deploy dist --env production",
+    "clean": "rm -rf build dist",
+    "prebuild": "npm run clean"
   },
   "eslintConfig": {
     "extends": [
