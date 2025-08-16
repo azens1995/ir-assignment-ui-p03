@@ -1,46 +1,156 @@
-# Getting Started with Create React App
+# Scholar Search - Academic Publication Search Engine
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Google Scholar-like search engine built with React and TypeScript that allows users to search academic publications through a clean, modern interface.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Google-like Search Interface**: Clean, modern search bar with search suggestions
+- **Real-time Search**: Instant search results from the academic publications API
+- **Relevance Scoring**: Each result displays a relevance score with color-coded indicators
+- **Pagination**: Google-style pagination with Previous/Next buttons and page numbers
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **Loading States**: Smooth loading animations and user feedback
+- **Accessibility**: Keyboard navigation and screen reader support
 
-### `npm start`
+## Search Results Display
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Each publication result shows:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Title**: Clickable link to the publication
+- **Authors**: Formatted author names
+- **Year**: Publication year
+- **Relevance Score**: Color-coded score (Green: High, Yellow: Medium, Red: Low)
+- **Publication URL**: Direct link to the source
+- **Page Number**: If available
 
-### `npm test`
+## API Integration
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The application integrates with the academic publications API:
 
-### `npm run build`
+- **Endpoint**: `https://api.irapi.workers.dev/api/publications/search`
+- **Query Parameter**: `q` (search term)
+- **Pagination**: `offset` parameter for pagination
+- **Response**: JSON with publications array and metadata
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technology Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **React 19**: Latest React with hooks and functional components
+- **TypeScript**: Type-safe development
+- **CSS3**: Modern styling with flexbox and grid
+- **Fetch API**: Native browser API for HTTP requests
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
+### Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Node.js (version 14 or higher)
+- npm or yarn
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Clone the repository:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+git clone <repository-url>
+cd ui
+```
 
-## Learn More
+2. Install dependencies:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Start the development server:
+
+```bash
+npm start
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### Available Scripts
+
+- `npm start` - Runs the app in development mode
+- `npm run build` - Builds the app for production
+- `npm test` - Launches the test runner
+- `npm run eject` - Ejects from Create React App (not recommended)
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── SearchBar.tsx          # Main search input component
+│   ├── SearchBar.css          # Search bar styles
+│   ├── SearchResults.tsx      # Results display and pagination
+│   ├── SearchResults.css      # Results page styles
+│   ├── PublicationCard.tsx    # Individual publication display
+│   └── PublicationCard.css    # Publication card styles
+├── types/
+│   └── index.ts              # TypeScript interfaces
+├── App.tsx                   # Main application component
+├── App.css                   # Global application styles
+└── index.tsx                 # Application entry point
+```
+
+## Usage
+
+1. **Search**: Enter your search query in the search bar and press Enter or click Search
+2. **Browse Results**: View publication results with relevance scores
+3. **Navigate**: Use pagination controls to browse through all results
+4. **Access Publications**: Click on publication titles to open the source links
+
+## Features in Detail
+
+### Search Functionality
+
+- Real-time search with API integration
+- Query validation and error handling
+- Loading states during search operations
+
+### Pagination
+
+- Google-style pagination with ellipsis
+- Previous/Next navigation
+- Page number selection
+- Responsive pagination controls
+
+### Relevance Scoring
+
+- Visual indicators for relevance scores
+- Color-coded scoring system:
+  - Green (8.0+): High relevance
+  - Yellow (6.0-7.9): Medium relevance
+  - Red (<6.0): Low relevance
+
+### Responsive Design
+
+- Mobile-first approach
+- Adaptive layouts for different screen sizes
+- Touch-friendly interface elements
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+- Inspired by Google Scholar's clean interface
+- Built with Create React App
+- Uses modern web standards and best practices
