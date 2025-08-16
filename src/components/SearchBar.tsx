@@ -90,15 +90,25 @@ const SearchBar: React.FC<SearchBarProps> = ({
     });
   };
 
-  const handleHistoryItemClick = (historyItem: string) => {
+  const handleHistoryItemClick = (historyItem: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
     setQuery(historyItem);
     onSearch(historyItem);
+    addToSearchHistory(historyItem);
     setShowHistory(false);
     setSelectedHistoryIndex(-1);
-    inputRef.current?.focus();
+    
+    // Focus back to input after a short delay to ensure the click event is fully processed
+    setTimeout(() => {
+      inputRef.current?.focus();
+    }, 10);
   };
 
-  const clearHistory = () => {
+  const clearHistory = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     setSearchHistory([]);
     setSelectedHistoryIndex(-1);
   };
@@ -117,6 +127,15 @@ const SearchBar: React.FC<SearchBarProps> = ({
     } else {
       setShowHistory(false);
     }
+  };
+
+  const handleClearButtonClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setQuery('');
+    setSelectedHistoryIndex(-1);
+    setShowHistory(false);
+    inputRef.current?.focus();
   };
 
   return (
@@ -145,11 +164,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           {query && (
             <button
               type='button'
-              onClick={() => {
-                setQuery('');
-                setSelectedHistoryIndex(-1);
-                inputRef.current?.focus();
-              }}
+              onClick={handleClearButtonClick}
               className='clear-button'
               disabled={isLoading}
               aria-label='Clear search'
@@ -179,7 +194,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
                 <button
                   key={index}
                   type='button'
-                  onClick={() => handleHistoryItemClick(item)}
+                  onClick={(e) => handleHistoryItemClick(item, e)}
                   className={`history-item ${
                     index === selectedHistoryIndex ? 'selected' : ''
                   }`}
