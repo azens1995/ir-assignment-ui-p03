@@ -93,13 +93,13 @@ const SearchBar: React.FC<SearchBarProps> = ({
   const handleHistoryItemClick = (historyItem: string, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     setQuery(historyItem);
     onSearch(historyItem);
     addToSearchHistory(historyItem);
     setShowHistory(false);
     setSelectedHistoryIndex(-1);
-    
+
     // Focus back to input after a short delay to ensure the click event is fully processed
     setTimeout(() => {
       inputRef.current?.focus();
