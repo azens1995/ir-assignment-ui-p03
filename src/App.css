@@ -50,7 +50,28 @@ body {
 .app-main {
   flex: 1;
   padding: 40px 0;
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 280px);
+}
+
+.search-header {
+  max-width: 800px;
+  margin: 0 auto 32px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.search-header h2 {
+  margin: 0 0 12px 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: #202124;
+}
+
+.search-header p {
+  margin: 0;
+  font-size: 16px;
+  color: #5f6368;
+  line-height: 1.5;
 }
 
 .error-message {
@@ -118,6 +139,20 @@ body {
 
   .app-main {
     padding: 20px 0;
+    min-height: calc(100vh - 240px);
+  }
+
+  .search-header {
+    margin-bottom: 24px;
+    padding: 0 16px;
+  }
+
+  .search-header h2 {
+    font-size: 20px;
+  }
+
+  .search-header p {
+    font-size: 14px;
   }
 
   .error-message {

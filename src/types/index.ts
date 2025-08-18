@@ -28,3 +28,21 @@ export interface SearchResponse {
   search_metadata: SearchMetadata;
   publications: Publication[];
 }
+
+// Document Classification Types
+export interface ClassificationRequest {
+  document: string;
+}
+
+export interface ClassificationResponse {
+  status: string;
+  predicted_category: 'Politics' | 'Business' | 'Health';
+  confidence_scores: {
+    Politics: number;
+    Business: number;
+    Health: number;
+  };
+  preprocessed_text: string;
+}
+
+export type TabType = 'search' | 'classification';

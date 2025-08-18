@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
+import TabHeader from './components/TabHeader';
+import DocumentClassification from './components/DocumentClassification';
 import { useSearch } from './hooks';
+import { TabType } from './types';
 import './App.css';
 
 function App() {
+  const [activeTab, setActiveTab] = useState<TabType>('search');
+
   const {
     searchResponse,
     isLoading,
@@ -25,40 +30,61 @@ function App() {
     }
   };
 
+  const handleTabChange = (tab: TabType) => {
+    setActiveTab(tab);
+  };
+
   return (
     <div className='App'>
       <header className='app-header'>
         <div className='header-content'>
-          <h1 className='app-title'>IR Search Engine</h1>
-          <p className='app-subtitle'>
-            Search academic publications of Coventry University's School of
-            Economics, Finance and Accounting
-          </p>
+          <h1 className='app-title'>
+            Information Retrieval Assignment by Eklak Dangaura
+          </h1>
         </div>
       </header>
 
-      <main className='app-main'>
-        <SearchBar onSearch={handleSearch} isLoading={isLoading} />
+      <TabHeader activeTab={activeTab} onTabChange={handleTabChange} />
 
-        {error && (
-          <div className='error-message'>
-            <p>Error: {error}</p>
-            <button onClick={resetSearch} className='retry-button'>
-              Try Again
-            </button>
-          </div>
+      <main className='app-main'>
+        {activeTab === 'search' && (
+          <>
+            <div className='search-header'>
+              <h2>Search Engine</h2>
+              <p>
+                Search academic publications of Coventry University's School of
+                Economics, Finance and Accounting
+              </p>
+            </div>
+
+            <SearchBar onSearch={handleSearch} isLoading={isLoading} />
+
+            {error && (
+              <div className='error-message'>
+                <p>Error: {error}</p>
+                <button onClick={resetSearch} className='retry-button'>
+                  Try Again
+                </button>
+              </div>
+            )}
+
+            <SearchResults
+              searchResponse={searchResponse}
+              isLoading={isLoading}
+              onPageChange={handlePageChange}
+              currentOffset={currentOffset}
+            />
+          </>
         )}
 
-        <SearchResults
-          searchResponse={searchResponse}
-          isLoading={isLoading}
-          onPageChange={handlePageChange}
-          currentOffset={currentOffset}
-        />
+        {activeTab === 'classification' && <DocumentClassification />}
       </main>
 
       <footer className='app-footer'>
-        <p>&copy; 2024 Scholar Search. Academic publication search engine.</p>
+        <p>
+          &copy; 2024 Scholar Search. Academic publication search engine and
+          document classification.
+        </p>
       </footer>
     </div>
   );
