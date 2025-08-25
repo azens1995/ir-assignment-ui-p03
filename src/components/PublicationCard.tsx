@@ -58,9 +58,6 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
 
       <div className='publication-footer'>
         <div className='publication-url'>{publication.publication_link}</div>
-        {publication.page_number > 0 && (
-          <div className='page-number'>Page {publication.page_number}</div>
-        )}
       </div>
     </div>
   );
