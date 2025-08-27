@@ -1,7 +1,8 @@
 .document-classification {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
+  /* Remove max-width and margin since it's now handled by parent container */
+  /* max-width: 800px; */
+  /* margin: 0 auto; */
+  /* padding: 0 20px; */
 }
 
 .classification-container {
@@ -273,9 +274,10 @@
 
 /* Responsive design */
 @media (max-width: 768px) {
-  .document-classification {
+  /* Remove padding since it's now handled by parent container */
+  /* .document-classification {
     padding: 0 16px;
-  }
+  } */
 
   .classification-header {
     padding: 24px 20px 20px;

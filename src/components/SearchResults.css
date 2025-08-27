@@ -1,7 +1,9 @@
 .search-results {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  /* Remove max-width and margin since it's now handled by parent container */
+  /* max-width: 800px; */
+  /* margin: 0 auto; */
+  /* padding: 20px; */
+  width: 100%;
 }
 
 .loading-container {
@@ -11,6 +13,9 @@
   justify-content: center;
   padding: 60px 20px;
   text-align: center;
+  min-height: 300px; /* Ensure consistent height during loading */
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
 }
 
 .loading-spinner {
@@ -21,6 +26,7 @@
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 16px;
+  flex-shrink: 0; /* Prevent spinner from shrinking */
 }
 
 @keyframes spin {
@@ -46,6 +52,8 @@
 
 .results-list {
   margin-bottom: 40px;
+  width: 100%;
+  box-sizing: border-box; /* Ensure consistent box model */
 }
 
 .no-results {
@@ -109,9 +117,10 @@
 }
 
 @media (max-width: 768px) {
-  .search-results {
+  /* Remove padding since it's now handled by parent container */
+  /* .search-results {
     padding: 16px;
-  }
+  } */
 
   .pagination {
     gap: 4px;

@@ -57,10 +57,54 @@ body {
   min-height: calc(100vh - 280px);
 }
 
-.search-header {
+/* Add consistent content container to prevent layout shifts */
+.content-container {
   max-width: 800px;
-  margin: 0 auto 32px;
+  margin: 0 auto;
   padding: 0 20px;
+  min-height: 400px; /* Ensure minimum height to prevent layout shifts */
+  position: relative; /* For absolute positioning of loading states */
+}
+
+/* Prevent layout shifts during tab switching */
+.content-container > * {
+  width: 100%;
+}
+
+/* Smooth transitions for tab content */
+.content-container > * {
+  transition: opacity 0.2s ease;
+}
+
+/* Tab transition classes for smooth switching */
+.tab-content {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.tab-content-enter {
+  opacity: 0;
+}
+
+.tab-content-enter-active {
+  opacity: 1;
+}
+
+.tab-content-exit {
+  opacity: 1;
+}
+
+.tab-content-exit-active {
+  opacity: 0;
+}
+
+/* Ensure consistent spacing */
+.search-header {
+  /* Remove max-width and margin since it's now handled by parent container */
+  /* max-width: 800px; */
+  /* margin: 0 auto 32px; */
+  /* padding: 0 20px; */
+  margin-bottom: 32px;
   text-align: center;
 }
 
@@ -79,8 +123,10 @@ body {
 }
 
 .error-message {
-  max-width: 800px;
-  margin: 20px auto;
+  /* Remove max-width and margin since it's now handled by parent container */
+  /* max-width: 800px; */
+  /* margin: 20px auto; */
+  margin: 20px 0;
   padding: 16px 20px;
   background: #fce8e6;
   border: 1px solid #f28b82;
@@ -146,9 +192,13 @@ body {
     min-height: calc(100vh - 240px);
   }
 
+  .content-container {
+    padding: 0 16px;
+    min-height: 300px; /* Smaller minimum height on mobile */
+  }
+
   .search-header {
     margin-bottom: 24px;
-    padding: 0 16px;
   }
 
   .search-header h2 {
@@ -160,7 +210,7 @@ body {
   }
 
   .error-message {
-    margin: 16px;
+    margin: 16px 0;
     padding: 12px 16px;
   }
 }
