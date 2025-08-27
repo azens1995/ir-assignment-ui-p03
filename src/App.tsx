@@ -82,8 +82,8 @@ function App() {
 
       <footer className='app-footer'>
         <p>
-          &copy; 2024 Scholar Search. Academic publication search engine and
-          document classification.
+          &copy; {new Date().getFullYear()} Eklak Dangaura. Academic publication
+          search engine and document classification.
         </p>
       </footer>
     </div>

@@ -3,6 +3,9 @@
   border-bottom: 1px solid #e8eaed;
   padding: 0;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 72px; /* Height of main header (20px padding * 2 + title height) */
+  z-index: 99;
 }
 
 .tab-container {
@@ -51,6 +54,10 @@
 
 /* Responsive design */
 @media (max-width: 768px) {
+  .tab-header {
+    top: 56px; /* Adjusted for smaller header on mobile */
+  }
+
   .tab-container {
     flex-direction: column;
   }

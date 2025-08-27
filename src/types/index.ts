@@ -5,6 +5,7 @@ export interface Publication {
   authors: string;
   publication_link: string;
   author_links: string;
+  abstract: string;
   created_at: string;
   updated_at: string;
   relevance_score: number;

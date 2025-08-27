@@ -24,6 +24,21 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
     return cleanAuthors;
   };
 
+  const truncateAbstract = (abstract: string, maxLines: number = 3) => {
+    if (!abstract) return '';
+
+    // Split into sentences and take first few sentences
+    const sentences = abstract.split('. ').slice(0, maxLines);
+    const truncated = sentences.join('. ');
+
+    // Add ellipsis if we truncated
+    if (sentences.length < abstract.split('. ').length) {
+      return truncated + '...';
+    }
+
+    return truncated;
+  };
+
   const getRelevanceColor = (score: number) => {
     if (score >= 8) return '#34a853'; // Green for high relevance
     if (score >= 6) return '#fbbc04'; // Yellow for medium relevance
@@ -43,18 +58,26 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
             {publication.title}
           </a>
         </h3>
-        <div
-          className='relevance-score'
-          style={{ color: getRelevanceColor(publication.relevance_score) }}
-        >
-          {publication.relevance_score.toFixed(1)}
+        <div className='publication-header-right'>
+          <div className='year'>{publication.year}</div>
+          <div
+            className='relevance-score'
+            style={{ color: getRelevanceColor(publication.relevance_score) }}
+          >
+            {publication.relevance_score.toFixed(1)}
+          </div>
         </div>
       </div>
 
       <div className='publication-meta'>
         <div className='authors'>{formatAuthors(publication.authors)}</div>
-        <div className='year'>{publication.year}</div>
       </div>
+
+      {publication.abstract && (
+        <div className='publication-abstract'>
+          {truncateAbstract(publication.abstract)}
+        </div>
+      )}
 
       <div className='publication-footer'>
         <div className='publication-url'>{publication.publication_link}</div>

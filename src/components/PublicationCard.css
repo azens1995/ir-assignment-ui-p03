@@ -24,6 +24,14 @@
   margin-right: 16px;
 }
 
+.publication-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  min-width: 80px;
+}
+
 .publication-link {
   color: #1a0dab;
   text-decoration: none;
@@ -54,6 +62,13 @@
   text-align: center;
 }
 
+.year {
+  color: #5f6368;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: right;
+}
+
 .publication-meta {
   display: flex;
   align-items: center;
@@ -68,9 +83,16 @@
   font-weight: 500;
 }
 
-.year {
-  color: #5f6368;
-  font-weight: 500;
+.publication-abstract {
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #3c4043;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .publication-footer {
@@ -104,6 +126,14 @@
 
   .publication-title {
     margin-right: 0;
+  }
+
+  .publication-header-right {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-width: auto;
   }
 
   .publication-meta {
