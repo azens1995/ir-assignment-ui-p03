@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+/* Always show scrollbar to prevent layout shifts */
+html {
+  overflow-y: scroll;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -59,7 +64,7 @@ body {
 
 /* Add consistent content container to prevent layout shifts */
 .content-container {
-  max-width: 800px;
+  width: 800px; /* Fixed width instead of max-width to prevent shifts */
   margin: 0 auto;
   padding: 0 20px;
   min-height: 400px; /* Ensure minimum height to prevent layout shifts */
@@ -69,11 +74,19 @@ body {
 /* Prevent layout shifts during tab switching */
 .content-container > * {
   width: 100%;
+  max-width: 100%; /* Ensure content doesn't exceed container width */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 /* Smooth transitions for tab content */
 .content-container > * {
   transition: opacity 0.2s ease;
+}
+
+/* Ensure consistent positioning for tab content */
+.content-container > div {
+  position: relative;
+  left: 0; /* Prevent horizontal shifts */
 }
 
 /* Tab transition classes for smooth switching */
@@ -193,6 +206,8 @@ body {
   }
 
   .content-container {
+    width: 100%; /* Full width on mobile */
+    max-width: 600px; /* Limit max width */
     padding: 0 16px;
     min-height: 300px; /* Smaller minimum height on mobile */
   }
