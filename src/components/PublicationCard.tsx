@@ -59,13 +59,13 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
           </a>
         </h3>
         <div className='publication-header-right'>
-          <div className='year'>{publication.year}</div>
           <div
             className='relevance-score'
             style={{ color: getRelevanceColor(publication.relevance_score) }}
           >
             {publication.relevance_score.toFixed(1)}
           </div>
+          <div className='year'>{publication.year}</div>
         </div>
       </div>
 
